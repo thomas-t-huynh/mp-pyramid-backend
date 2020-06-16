@@ -54,6 +54,12 @@ userSchema.virtual('days', {
     foreignField: 'owner'
 })
 
+userSchema.virtual('schedule', {
+  ref: 'Schedule',
+  localField: '_id',
+  foreignField: 'owner'
+})
+
 // virtual - Creates a prop using the object of the model. Convenient feature to make properties with already existing properties, and to link different models.
 // first params is name of property. Second is whatever you want to return in the named propert IF using get method. You can pass in an object that you cna refer to other models.
 // ref - the other model. localField - the property that you want to give to the other model. foreignField - the property in the other model you want to put current model's property in.

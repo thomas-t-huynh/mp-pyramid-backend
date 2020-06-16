@@ -1,12 +1,21 @@
 const mongoose = require('mongoose');
 
-const scheduleSchema = new mongoose.Schema({
-    days: [{
-        exercise: {
-            type: String,
+const daySchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    date: {
+        type: String,
+        required: true
+    },
+    exercises: [
+        {
+            type: Object,
             required: true
         }
-    }],
+    ],
     owner: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
@@ -18,6 +27,6 @@ const scheduleSchema = new mongoose.Schema({
 })
 
 
-const Schedule = mongoose.model('Schedule', scheduleSchema);
+const Day = mongoose.model('Day', daySchema);
 
-module.exports = Schedule;
+module.exports = Day;

@@ -1,21 +1,17 @@
 const mongoose = require('mongoose');
 
 const scheduleSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    date: {
-        type: String,
-        required: true
-    },
-    exercises: [{
+    days: [{
         exercise: {
-            type: Mixed,
+            type: String,
             required: true
         }
-    }]
+    }],
+    owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'User'
+    }
 },
 {
     timestamps: true
