@@ -3,8 +3,6 @@ const validator = require("validator");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const Task = require("./task");
-
 const userSchema = new mongoose.Schema(
   {
     username: {
@@ -50,7 +48,7 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-userSchema.virtual('tasks', {
+userSchema.virtual('days', {
     ref: 'Day',
     localField: '_id',
     foreignField: 'owner'

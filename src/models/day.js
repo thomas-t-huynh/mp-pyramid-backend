@@ -1,18 +1,9 @@
 const mongoose = require('mongoose');
 
-const daySchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    date: {
-        type: String,
-        required: true
-    },
-    exercises: [{
+const scheduleSchema = new mongoose.Schema({
+    days: [{
         exercise: {
-            type: Mixed,
+            type: String,
             required: true
         }
     }],
@@ -27,6 +18,6 @@ const daySchema = new mongoose.Schema({
 })
 
 
-const Day = mongoose.model('Day', daySchema);
+const Schedule = mongoose.model('Schedule', scheduleSchema);
 
-module.exports = Day;
+module.exports = Schedule;
