@@ -3,6 +3,7 @@ require('./db/mongoose');
 
 const userRouter = require('./routers/user')
 const dayRouter = require('./routers/day')
+const scheduleRouter = require('./routers/schedule')
 
 const app = express();
 const port = process.env.PORT
@@ -15,6 +16,7 @@ app.use(function(req, res, next) {
 });
 app.use(express.json())
 app.use(userRouter)
+app.use(scheduleRouter)
 app.use(dayRouter)
 
 app.listen(port, () => {

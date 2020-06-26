@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
 const scheduleSchema = new mongoose.Schema({
-    days: [{
-        exercise: {
+    days: [
+        {
             type: String,
             required: true
         }
-    }],
+    ],
     owner: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
