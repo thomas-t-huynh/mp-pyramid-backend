@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const scheduleSchema = new mongoose.Schema({
     days: [
         {
-            type: String,
+            type: mongoose.Schema.Types.ObjectId,
             required: true
         }
     ],

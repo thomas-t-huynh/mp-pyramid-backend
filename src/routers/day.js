@@ -1,6 +1,7 @@
 const express = require('express')
 const router = new express.Router()
 const Day = require('../models/day')
+const Schedule = require('../models/schedule')
 const auth = require('../middleware/auth')
 
 router.post('/day', auth,  async (req, res) => {
@@ -17,6 +18,35 @@ router.post('/day', auth,  async (req, res) => {
         res.status(400).send(e)
     }
 })
+
+router.post('/day/schedule', auth,  async (req, res) => {
+    try {
+        async function saveDays () {
+            return await Promise.all(
+                req.body.map(async day => {
+                    let newDay = new Day({
+                        ...day,
+                        owner: req.user._id
+                    })
+                    const savedDay = await newDay.save()
+                    return savedDay._id
+                })
+            )
+        }
+        const days = await saveDays()
+        const schedule = new Schedule({
+            days,
+            owner: req.user._id
+        })
+        await schedule.save()
+        res.status(201).send(req.body)
+    } catch (e) {
+        console.log(e)
+        res.status(400).send(e)
+    }
+})
+
+
 
 // GET /days?completed=true
 // GET /days?limit=10&skip=0
