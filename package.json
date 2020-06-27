@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "env-cmd ./config/dev.env nodemon src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mongodb": "md mongo-db & \"C:/users/thomas huynh/mongodb/mongodb/bin/mongod.exe\" --dbpath \"c:/users/thomas huynh/mp-pyramid-data\""
   },
   "author": "",
   "license": "ISC",
